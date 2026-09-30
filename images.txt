@@ -1,0 +1,12 @@
+openksc/ks-console:v3.4.1
+openksc/ks-console:v4.1.3
+openksc/ks-installer:v3.4.1
+openksc/ks-controller-manager:v3.4.1
+openksc/ks-controller-manager:v4.1.3
+openksc/ks-apiserver:v3.4.1
+openksc/ks-apiserver:v4.1.3
+openksc/ks-extensions-museum:v1.1.4
+openksc/ks-extensions-museum:v1.1.6
+openksc/kubectl:v1.26.13
+openksc/kubectl:v1.33.1
+# 此处一定要有一行空行

@@ -1,0 +1,33 @@
+name: Sync Docker Images to Aliyun ACR
+run-name: ${{ github.actor }} is syncing Docker images
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'images.txt'
+      - '.github/workflows/sync.yml'
+  workflow_dispatch:
+
+jobs:
+  sync-images:
+    if: github.repository == 'kalencaya/container-image-syncer'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+      - name: image-sync
+        uses: hhyasdf/image-sync-action@v1.1
+        with:
+          auth_file: ./auth.yaml
+          images_file: ./images.yaml
+          version: 1.5.5
+          proc: 6
+        env:
+            ACR_REGISTRY: ${{ secrets.ACR_REGISTRY }}
+            ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
+            ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+      - name: Job status
+        run: echo "This job's status is ${{ job.status }}"
